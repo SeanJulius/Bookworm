@@ -8,7 +8,7 @@ using System.Net;
 
 namespace Bookworm.Models
 {
-    [JsonObject]
+    
     public class Book
     {
         [JsonProperty("bookId")]
@@ -37,15 +37,15 @@ namespace Bookworm.Models
           var apiCallTask = ApiHelper.GetAll();
           var result = apiCallTask.Result;
 
-          // JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
-          // List<Book> bookList = JsonConvert.DeserializeObject<List<Book>>(jsonResponse.ToString());
 
-          JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
-          List<Book> bookList = JsonConvert.DeserializeObject<List<Book>>(jsonResponse["results"].ToString());
-        
-          // JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
+          //Below we turn result into jarray and try to make a list of Book(s) out of it: 
+          JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
+          List<Book> bookList = JsonConvert.DeserializeObject<List<Book>>(jsonResponse.ToString());
+
+      
           return bookList;
           
         }
+
     }
 }

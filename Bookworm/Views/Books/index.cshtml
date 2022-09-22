@@ -1,5 +1,6 @@
 @using Bookworm.Models; 
-@model List<Bookworm.Models.Book>;
+@model Bookworm.Models.Book;
+@* @model List<Bookworm.Models.Book>; *@
 
 
 
@@ -7,7 +8,9 @@
     Layout = "_Layout"; 
 }
 
-@if (@Model.Count == 0)
+<h1>Model.Title</h1>
+
+@* @if (@Model.Count == 0)
 {
   <br><br><h4>There are no books in the system</h4>
 }
@@ -17,14 +20,10 @@ else
   @foreach (Book Book in Model)
   {
     <ul>
-      <li>@Book.Title</li>
-
-        @* <li>ID: @Book.BookId</li> *@
-        @* <li>Title: @Book.Title</li> *@
-        @* <li>Name: @Book.Title</li>  *@
+      <li>@Book.Title</li> 
     </ul>
   }
-}
+}   *@
 
 
 
@@ -54,5 +53,5 @@ else
       <img src="~/img/giving-tree.jpg" class="d-block w-100" alt="giving-tree">
     </div>
   </div> *@
-</div>
+@* </div> *@
 
