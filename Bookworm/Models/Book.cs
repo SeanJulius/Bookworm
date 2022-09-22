@@ -42,7 +42,7 @@ namespace Bookworm.Models
 
           JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
           List<Book> bookList = JsonConvert.DeserializeObject<List<Book>>(jsonResponse["results"].ToString());
-          int? length = bookList?.Length; 
+        
           // JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
           return bookList;
           
