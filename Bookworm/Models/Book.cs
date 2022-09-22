@@ -4,9 +4,11 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Runtime.Serialization;
 using Newtonsoft.Json.Serialization;
+using System.Net;
 
 namespace Bookworm.Models
 {
+    [JsonObject]
     public class Book
     {
         [JsonProperty("bookId")]
@@ -34,18 +36,16 @@ namespace Bookworm.Models
         {
           var apiCallTask = ApiHelper.GetAll();
           var result = apiCallTask.Result;
-          
-          JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
 
           // JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
-          
-          //List<Book> bookList = JsonConvert.DeserializeObject<List<Book>>(jsonResponse["result"].ToString());
+          // List<Book> bookList = JsonConvert.DeserializeObject<List<Book>>(jsonResponse.ToString());
 
-
-List<Book> bookList = JsonConvert.DeserializeObject<List<Book>>(jsonResponse["results"].ToString());
-
+          JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
+          List<Book> bookList = JsonConvert.DeserializeObject<List<Book>>(jsonResponse["results"].ToString());
+          int? length = bookList?.Length; 
+          // JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
           return bookList;
-    
+          
         }
     }
 }

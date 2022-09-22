@@ -15,7 +15,7 @@ namespace Bookworm.Controllers
   public class BooksController : Controller
   {
 
-    public IActionResult Index()
+    public ActionResult Index()
     {
       var allBooks = Book.GetBooks();
       return View(allBooks);
